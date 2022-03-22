@@ -1,0 +1,28 @@
+:root {
+	/* --main-color: #f47625;
+	--secondary-color: #19345e; */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+
+Nav{
+	-webkit-box-shadow: 0px 2px 7px -1px rgba(0,0,0,0.46);
+	-moz-box-shadow: 0px 2px 7px -1px rgba(0,0,0,0.46);
+	box-shadow: 0px 2px 7px -1px rgba(0,0,0,0.46);
+}
+
+Form{
+	border-radius: 50%;
+}
+
+.cardMovie{
+	width: 18rem;
+	margin-right: auto;
+	margin-left: auto;
+}
