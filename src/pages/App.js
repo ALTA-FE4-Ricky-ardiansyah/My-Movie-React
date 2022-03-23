@@ -1,72 +1,88 @@
-import { useState } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import '../App.css';
-import  {NavbarComponent}  from '../components/NavbarComponent';
-import CardMovie from '../components/sectionFeature/CardMovie';
+import axios from "axios";
+import { Component, useState } from "react";
+// import { Container, Nav, Navbar } from "react-bootstrap";
+import "../App.css";
+import { NavbarComponent } from "../components/NavbarComponent";
+import CardMovie from "../components/sectionFeature/CardMovie";
 
-function App() {
-  const [theme, setTheme]=useState('light');
-  const movieList=[
-    {
-      Title:'Spiderman',
-      Img:'img/spiderman.jpg',
-      Synopsis:`With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.`,
-    },
-    {
-      Title:'The Batman',
-      Img:'img/Batman.jpg',
-      Synopsis:`When the Riddler, a sadistic serial killer, begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question his family's involvement.`,
-    },
-    {
-      Title:'Uncharted',
-      Img:'img/Uncharted.jpg',
-      Synopsis:`Street-smart Nathan Drake is recruited by seasoned treasure hunter Victor "Sully" Sullivan to recover a fortune amassed by Ferdinand Magellan, and lost 500 years ago by the House of Moncada.`,
-    },
-  ]
-  function changeTheme(theme){
-    // if(theme == 'light'){
-    //   return 'dark'
-    // }else{
-    //   return 'light'
-    // }
-    // console.log(theme)
-
+class App extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      data: [],
+      isReady: false,
+      page: 1,
+    };
   }
-  return (
-    <>
-   {/* <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-  crossorigin="anonymous"
-/> */}
-    <div className="App"> 
-    <NavbarComponent theme={theme} />
-    <div className='container mt-3 '>
-      <div className='row justify-content-center'>
-        {
-          movieList.map((item)=>(
-            <CardMovie Title={item.Title} Img={item.Img} Synopsis={item.Synopsis}/>
-          ))
-      }
-        
-        
+  // const [theme, setTheme] = useState("light");
+
+  async componentDidMount() {
+    this.fetchData();
+  }
+
+  async fetchData() {
+    axios
+      .get(
+        // `https://api.themoviedb.org/3/movie/now_playing?api_key=6160938e13f56af1aea7deaf4503ba9e&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${this.state.page}`
+      )
+      .then((response) => {
+        this.setState({ data: response.data.results, isReady: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // fetch(
+    //   `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${this.state.page}`
+    // )
+    //   .then((response) => response.json())
+    //   .then((res) => {
+    //     this.setState({ data: res.results, isReady: true });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }
+
+  // function changeTheme(theme) {
+  //   // if(theme == 'light'){
+  //   //   return 'dark'
+  //   // }else{
+  //   //   return 'light'
+  //   // }
+  //   // console.log(theme)
+  // }
+  render() {
+    if (this.state.isReady) {
+      return (
+        <>
+          <div className="App">
+            <NavbarComponent theme="dark" />
+            <div>Feature</div>
+            <div className="container-fluid  mt-3">
+              <div className="container">
+                <div className="row justify-content-center">
+                  {this.state.data.map((item) => (
+                    <CardMovie
+                      Title={item.title}
+                      Img={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      Synopsis={item.overview}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <div className="container">
+          <p>LAGI LOADING</p>
         </div>
-    </div>
-    
-    {/* <button type='button' onClick={console.log(theme)}>klik</button> */}
-    </div>
-    {/* <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
-
-<script
-  src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
-  crossorigin></script>
-
-<script
-  src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-  crossorigin></script> */}
-    </>
-  );
+      );
+    }
+  }
 }
 
 export default App;
