@@ -1,14 +1,18 @@
-import { Carousel } from "bootstrap";
 import React, { Component } from "react";
+import { Carousel } from "react-bootstrap";
 
-export default class heroCarousel extends Component {
+class HeroCarousel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     return (
       <Carousel>
         <Carousel.Item interval={1000}>
           <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=First slide&bg=373940"
+            className="d-block w-100 carouselImg"
+            src="/img/slider/uncharted.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -18,8 +22,8 @@ export default class heroCarousel extends Component {
         </Carousel.Item>
         <Carousel.Item interval={500}>
           <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=Second slide&bg=282c34"
+            className="d-block w-100 carouselImg"
+            src="/img/slider/spiderman.jpg"
             alt="Second slide"
           />
           <Carousel.Caption>
@@ -29,8 +33,8 @@ export default class heroCarousel extends Component {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=Third slide&bg=20232a"
+            className="d-block w-100 carouselImg"
+            src="/img/slider/adamProject.jpg"
             alt="Third slide"
           />
           <Carousel.Caption>
@@ -44,3 +48,5 @@ export default class heroCarousel extends Component {
     );
   }
 }
+
+export { HeroCarousel };

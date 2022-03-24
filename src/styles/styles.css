@@ -22,6 +22,9 @@
   text-decoration: none;
 }
 
+.bgLight {
+  background-color: #dfdfdf;
+}
 Nav {
   -webkit-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.46);
   -moz-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.46);
@@ -45,4 +48,10 @@ Form {
 
 .txtSynopsis {
   font-size: 0.875rem;
+}
+
+.carouselImg {
+  height: 95vh;
+  width: 100vh;
+  font-weight: 100;
 }
