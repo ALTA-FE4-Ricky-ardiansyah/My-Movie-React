@@ -3,43 +3,6 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-// import { Layout } from "../components/Layout";
-
-// export default class CardMovie extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.props = {
-//       Title: "",
-//       Img: "",
-//       Synopsis: "",
-//       value: "",
-//     };
-//   }
-
-//   async componentDidMount() {
-//     this.fetchData();
-//   }
-
-//   async addfavorite(item) {}
-
-//   async handleChange(e) {
-//     this.setState({ value: e.target.value });
-//   }
-
-//   async handleSubmit(e) {
-//     console.log(e);
-//   }
-
-//   async fetchData() {
-//     axios
-//       .get(
-//         `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${this.props.page}`
-//       )
-//       .then((response) => {
-//         this.setState({ data: response.data.resul });
-//       });
-//   }
-
 const CardMovie = (props) => {
   const { Title, Img, Synopsis, value, navigate } = props;
   return (
