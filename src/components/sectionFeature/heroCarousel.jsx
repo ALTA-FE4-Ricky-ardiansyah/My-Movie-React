@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Carousel } from "react-bootstrap";
 
-class HeroCarousel extends Component {
+export default class HeroCarousel extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -48,5 +48,3 @@ class HeroCarousel extends Component {
     );
   }
 }
-
-export { HeroCarousel };
