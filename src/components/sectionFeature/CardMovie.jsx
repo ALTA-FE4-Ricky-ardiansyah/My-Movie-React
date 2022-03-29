@@ -4,20 +4,14 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const CardMovie = (props) => {
-  const { Title, Img, Synopsis, value, navigate } = props;
+  const { id, Title, Img, Synopsis, value, navigate, action, isFavorite } =
+    props;
   return (
     <>
-      {/* <form action="text" onSubmit={this.handleSubmit}>
-              <label>
-                name:
-                <input
-                  type="text"
-                  value={this.state.value}
-                  onChange={(e) => this.handleChange}
-                />
-              </label>
-            </form> */}
-      <div className="col-12 col-md-6 col-lg-4 col-xl-3 align-center mt-3">
+      <div
+        key={id}
+        className="col-12 col-md-6 col-lg-4 col-xl-3 align-center m-1"
+      >
         <Card className="cardMovie">
           <Link to={navigate}>
             <Card.Img className="imageCard" variant="top" src={Img} />
@@ -29,10 +23,17 @@ const CardMovie = (props) => {
                   {this.props.Synopsis}.
                 </Card.Text> */}
             </Card.Body>
-            {/* <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer> */}
           </Link>
+          <Card.Footer
+            className={`${isFavorite ? "bg-danger" : "bg-secondary"}`}
+            onClick={() => {
+              action(id);
+            }}
+          >
+            <small className="text-white">
+              {isFavorite ? "Remove from Favorite" : "Add to Favorite"}
+            </small>
+          </Card.Footer>
         </Card>
       </div>
     </>
