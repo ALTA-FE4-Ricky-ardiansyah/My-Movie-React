@@ -3,7 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import "../styles/MovieDetail.css";
 import "../styles/styles.css";
 import Image from "react-bootstrap/Image";
-import Col from "react-bootstrap/Col";
+// import Col from "react-bootstrap/Col";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
