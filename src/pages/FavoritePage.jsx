@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { Container, Nav, Navbar } from "react-bootstrap";
 import "../App.css";
 import NavbarComponent from "../components/NavbarComponent";
@@ -107,5 +107,4 @@ const App = () => {
     );
   }
 };
-
 export default App;

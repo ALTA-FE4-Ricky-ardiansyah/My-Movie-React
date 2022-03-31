@@ -26,7 +26,7 @@ export default function Routing() {
           <Route path="/movies" element={<App />} />
           <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/movie/:movie_id" element={<MovieDetail />} />
-          <Route path="/HeroSlide" element={<HeroSlide />} />
+          {/* <Route path="/HeroSlide" element={<HeroSlide />} /> */}
           {/* <Route path="*" element={<Contact />} /> */}
         </Routes>
       </ThemeContext.Provider>
