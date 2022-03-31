@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import "../App.css";
 import NavbarComponent from "../components/NavbarComponent";
 import CardMovie from "../components/sectionFeature/CardMovie";
-import HeroCarousel from "../components/sectionFeature/HeroCarousel";
+// import HeroCarousel from "../components/sectionFeature/HeroCarousel";
 // import { ThemeContext } from "../utils/context";
 
 const App = () => {
@@ -78,7 +78,7 @@ const App = () => {
       <>
         <div className="App">
           <NavbarComponent theme={theme} />
-          <HeroCarousel />
+          {/* <heroCarousel /> */}
           <div className="container-fluid bgLight py-5">
             <div>Feature</div>
             <div className="container">
